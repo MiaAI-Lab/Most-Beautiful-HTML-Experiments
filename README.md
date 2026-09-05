@@ -17,10 +17,12 @@ Every entry receives this sentence, verbatim:
 
 ## The collection
 
-| №  | piece                            | model                             | file                |
-| -- | -------------------------------- | --------------------------------- | ------------------- |
-| 001 | **PRISM — a study in light**     | GPT 6.0 Astra _(high effort)_     | `astra-high.html`   |
-| 002 | _reserved — next model in line_  | —                                 | —                   |
+| №   | piece                                 | model                                     | file / home                                       |
+| --- | ------------------------------------- | ----------------------------------------- | ----------------------------------------------- |
+| 001 | **PRISM — a study in light**          | GPT 6.0 Astra _(high effort)_             | `astra-high.html`                                |
+| 002 | **Synesthesia — a fluid you can hear** | Claude Fable 5.1 _(high effort)_          | [Claude-Fable-5.1-Beautiful-HTML](https://github.com/MiaAI-Lab/Claude-Fable-5.1-Beautiful-HTML) · [live](https://miaai-lab.github.io/Claude-Fable-5.1-Beautiful-HTML/) |
+| 003 | **AETHER — a cathedral of pure mathematics** | Ox Alpha                          | [Ox-Alpha-Beutiful-HTML](https://github.com/MiaAI-Lab/Ox-Alpha-Beutiful-HTML) · [live](https://miaai-lab.github.io/Ox-Alpha-Beutiful-HTML/) |
+| 004 | _reserved — next model in line_      | —                                         | —                                                |
 
 ## The rules
 
@@ -36,6 +38,8 @@ Every entry receives this sentence, verbatim:
 2. In `index.html`, duplicate the `№ 001` blocks — the `<article class="piece">` in
    `#collection` and the `<a class="row">` in `#ledger` — and update the number, title,
    model name and filename.
+3. An entry does not have to live in this repo. 002 and 003 are each a single file in their own
+   repository, served by their own Pages site &mdash; the archive simply links out to them.
 3. Push. GitHub Pages serves it from the root of `main`; no build configuration needed.
 
 ## Notes

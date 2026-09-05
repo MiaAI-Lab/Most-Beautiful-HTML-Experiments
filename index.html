@@ -563,6 +563,53 @@
   .xlink:hover .xm { background: var(--accent); transform: rotate(-8deg); }
   .nav .xlink { color: var(--muted); }
   .nav .xlink:hover { color: var(--fg); }
+
+  /* ── earlier pieces, hosted in their own repos ───────────────── */
+  .works { display: grid; gap: clamp(20px, 2.6vw, 34px); grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 1000px) { .works { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .work .work-body { display: grid; gap: clamp(16px, 2vw, 26px); padding: clamp(20px, 3vw, 30px) clamp(18px, 2.2vw, 28px) clamp(22px, 3vw, 30px); }
+  .work .h-plate { font-size: clamp(27px, 3.4vw, 40px); }
+  .work .desc { font-size: 15px; margin-top: 12px; }
+  .work .actions { margin-top: clamp(16px, 2vw, 24px); gap: 10px; }
+  .work .btn { padding: 12px 18px 11px; font-size: 13px; }
+  .work::before { opacity: 0; }
+  .work.w-syna::before { background: radial-gradient(420px 420px at 50% 12%, #9b6bff2e, #0000 66%); }
+  .work.w-aeth::before { background: radial-gradient(420px 420px at 50% 12%, #f0c66e2e, #0000 66%); }
+  .work:hover::before { opacity: 1; }
+  .work-plate { position: relative; aspect-ratio: 16 / 9; border-radius: 14px; overflow: hidden; border: 1px solid var(--line-soft); background: #050505; }
+  .p-syna .dye { position: absolute; border-radius: 50%; filter: blur(22px); mix-blend-mode: screen; will-change: transform; }
+  .p-syna .d1 { width: 46%; height: 64%; left: 0; top: 4%; background: radial-gradient(circle, #3ef0d0d9, #0000 70%); animation: float-a 19s ease-in-out infinite alternate; }
+  .p-syna .d2 { width: 44%; height: 68%; left: 24%; top: 24%; background: radial-gradient(circle, #2f6bffd9, #0000 70%); animation: float-b 23s ease-in-out infinite alternate; }
+  .p-syna .d3 { width: 40%; height: 60%; left: 52%; top: 6%; background: radial-gradient(circle, #7a3cffd9, #0000 70%); animation: float-a 21s ease-in-out infinite alternate-reverse; }
+  .p-syna .d4 { width: 36%; height: 56%; left: 70%; top: 34%; background: radial-gradient(circle, #ff2fd0c9, #0000 70%); animation: float-b 26s ease-in-out infinite alternate-reverse; }
+  @keyframes float-a { from { transform: translate(0, 0) scale(1); } to { transform: translate(10%, 8%) scale(1.18); } }
+  @keyframes float-b { from { transform: translate(0, 0) scale(1.1); } to { transform: translate(-9%, -7%) scale(0.94); } }
+  .p-syna .streak { position: absolute; left: 10%; right: 10%; bottom: 14%; height: 3px; border-radius: 999px; background: linear-gradient(90deg, #3ef0d0, #2f6bff, #7a3cff, #ff2fd0); opacity: 0.72; }
+  .p-aeth { background: radial-gradient(120% 130% at 50% 44%, #14120d, #060605 72%); }
+  .p-aeth .stars { position: absolute; inset: 0; background-image: radial-gradient(#fff5dfcc 0.6px, #0000 0.8px), radial-gradient(#fff5df75 0.5px, #0000 0.7px); background-size: 47px 39px, 29px 61px; opacity: 0.5; }
+  .p-aeth .core {
+    position: absolute; left: 50%; top: 46%; width: 54%; aspect-ratio: 1; transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background:
+      conic-gradient(from 18deg, #fff6e6d9, #d8b87e8c, #fffbf2d9, #b8945a8c, #fff6e6d9, #c9a2668c, #fffbf2d9, #d8b87e8c),
+      radial-gradient(circle at 50% 44%, #fffaef, #f7e7c6 30%, #e8ca8d 52%, #8d6d3d 68%, #0000 78%);
+    mask-image: radial-gradient(circle at 50% 50%, #000 44%, transparent 74%);
+    filter: blur(4px) brightness(1.05); animation: spin 34s linear infinite;
+  }
+  @keyframes spin { to { transform: translate(-50%, -50%) rotate(360deg); } }
+  .plate-hud { position: absolute; left: 13px; bottom: 11px; margin: 0; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--faint); }
+  .plate-hud b { color: var(--accent); font-weight: 400; }
+  .spec { display: flex; flex-wrap: wrap; gap: 5px 12px; margin: 14px 0 0; font-family: var(--mono); font-size: 11px; color: var(--faint); }
+  .spec b { color: var(--muted); font-weight: 400; }
+  .work-host { margin: 12px 0 0; font-family: var(--mono); font-size: 10.5px; color: var(--faint); }
+  .work-host a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .work-host a:hover { color: var(--accent); border-color: var(--accent); }
+  .row .ext { color: var(--accent); }
+
+  .w-syna .btn-primary { background: linear-gradient(100deg, #3ef0d0, #2f6bff 55%, #ff2fd0); box-shadow: 0 16px 40px -18px #2f6bff8c; }
+  .w-syna .btn-primary:hover { box-shadow: 0 24px 54px -18px #7a3cffb3; }
+  .w-aeth .btn-primary { background: linear-gradient(100deg, #fffaef, #f0d9a8 55%, #b8945a); box-shadow: 0 16px 40px -18px #e8ca8d8c; }
+  .w-aeth .btn-primary:hover { box-shadow: 0 24px 54px -18px #f0d9a8b3; }
 </style>
 </head>
 <body>
@@ -588,6 +635,7 @@
         </a>
         <nav class="nav" aria-label="Sections">
           <a href="#collection">The collection</a>
+          <a href="#archive">Earlier pieces</a>
           <a href="#method">Method</a>
           <a href="#ledger">Ledger</a>
           <a href="https://github.com/MiaAI-Lab/Most-Beautiful-HTML-Experiments" rel="noopener">Source</a>
@@ -625,7 +673,7 @@
               </p>
 
               <dl class="facts rv" style="--d:0.38s">
-                <div><dt>Pieces indexed</dt><dd>01 &amp; counting</dd></div>
+                <div><dt>Pieces indexed</dt><dd>03 in the archive</dd></div>
                 <div><dt>Latest</dt><dd><em>Astra</em></dd></div>
                 <div><dt>Format</dt><dd>one file, portable</dd></div>
                 <div><dt>Dependencies</dt><dd>none. truly.</dd></div>
@@ -795,10 +843,78 @@ Every piece was formatted for:
         </div>
       </section>
 
+            <section id="archive">
+        <div class="shell">
+          <div class="sec-head rv">
+            <span class="num">02 / the rest</span>
+            <h2>Earlier <em>pieces</em></h2>
+            <p>Two models before Astra. Each lives in its own repository and is served by its own Pages site, exactly as it came out of the model.</p>
+          </div>
+          <div class="works">
+          <article class="piece work w-syna rv" style="--d:0.06s">
+            <div class="piece-bar">
+              <span class="id">&#8470; 002</span>
+              <span>fluid &amp; generative audio</span>
+              <span class="live"><b></b> live on Pages</span>
+            </div>
+            <div class="work-body">
+              <div class="work-plate p-syna" role="img" aria-label="Four drifting plumes of teal, blue, violet and magenta dye on black, above a thin spectral line"><i class="dye d1"></i><i class="dye d2"></i><i class="dye d3"></i><i class="dye d4"></i><i class="streak"></i><p class="plate-hud">aurora &middot; <b>drift</b> &middot; drag to paint</p></div>
+              <div>
+                <ul class="meta-list"><li>WebGL 2</li><li>generative audio</li><li>six palettes</li></ul>
+                <h3 class="h-plate">Synesthesia <em>&mdash; a fluid you can hear</em></h3>
+                <p class="byline">
+                  <span class="model">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#3ef0d0" stroke-width="1.7" stroke-linejoin="round"><path d="M12 3 C17 9 20 12 20 15 C20 19.5 16.4 22 12 22 C7.6 22 4 19.5 4 15 C4 12 7 9 12 3 Z"></path></svg>
+                    Claude&nbsp;Fable&nbsp;5.1
+                  </span>
+                  <span class="chip">high effort</span>
+                  <span>&middot; 2026-09-04</span>
+                </p>
+                <p class="desc">A Navier-Stokes fluid you paint with: velocity is advected, vorticity confined, pressure solved by Jacobi iteration, and dyed colour rides along. Nothing is a recording &mdash; every note is synthesised live in the Web Audio API, tuned to the palette you are looking at. Leave it alone and three autonomous spirits keep painting.</p>
+                <p class="spec">one file <b>&middot; 50 KB</b> <b>&middot; zero dependencies</b> <b>&middot; six palettes</b></p>
+                <div class="actions">
+                  <a class="btn btn-primary" href="https://miaai-lab.github.io/Claude-Fable-5.1-Beautiful-HTML/" target="_blank" rel="noopener">Open on Pages <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17 L17 7 M9 7 L17 7 L17 15"></path></svg></a>
+                  <a class="btn btn-ghost" href="https://github.com/MiaAI-Lab/Claude-Fable-5.1-Beautiful-HTML" rel="noopener">Repository</a>
+                </div>
+                <p class="work-host">hosted at <a href="https://github.com/MiaAI-Lab/Claude-Fable-5.1-Beautiful-HTML" rel="noopener">Claude-Fable-5.1-Beautiful-HTML</a></p>
+              </div>
+            </div>
+          </article>
+          <article class="piece work w-aeth rv" style="--d:0.06s">
+            <div class="piece-bar">
+              <span class="id">&#8470; 003</span>
+              <span>ray-marched fractals &amp; score</span>
+              <span class="live"><b></b> live on Pages</span>
+            </div>
+            <div class="work-body">
+              <div class="work-plate p-aeth" role="img" aria-label="A warm ivory ray-marched fractal bloom turning among scattered stars"><i class="stars"></i><i class="core"></i><p class="plate-hud">form mandelbulb <b>&rarr;</b> menger cathedral</p></div>
+              <div>
+                <ul class="meta-list"><li>fragment shader</li><li>five forms</li><li>ambient score</li></ul>
+                <h3 class="h-plate">AETHER <em>&mdash; a cathedral of pure mathematics</em></h3>
+                <p class="byline">
+                  <span class="model">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#f0c66e" stroke-width="1.7" stroke-linejoin="round"><path d="M12 2 L19 9 L12 22 L5 9 Z"></path><path d="M5 9 L12 12 L19 9"></path><path d="M12 12 L12 22"></path></svg>
+                    Ox&nbsp;Alpha
+                  </span>
+                  
+                  <span>&middot; 2026-08-25</span>
+                </p>
+                <p class="desc">One fragment shader doing all the work: a signed-distance field marched to a glowing solid, cycling through five forms &mdash; Mandelbulb, Menger Cathedral, Sierpinski Flame, Trinity Bulb, Urchin &mdash; transmuting into one another while an embedded score breathes underneath. Drag to orbit, scroll to dive.</p>
+                <p class="spec">one file <b>&middot; 6.2 MB</b> <b>&middot; zero dependencies</b> <b>&middot; five forms</b></p>
+                <div class="actions">
+                  <a class="btn btn-primary" href="https://miaai-lab.github.io/Ox-Alpha-Beutiful-HTML/" target="_blank" rel="noopener">Open on Pages <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17 L17 7 M9 7 L17 7 L17 15"></path></svg></a>
+                  <a class="btn btn-ghost" href="https://github.com/MiaAI-Lab/Ox-Alpha-Beutiful-HTML" rel="noopener">Repository</a>
+                </div>
+                <p class="work-host">hosted at <a href="https://github.com/MiaAI-Lab/Ox-Alpha-Beutiful-HTML" rel="noopener">Ox-Alpha-Beutiful-HTML</a></p>
+              </div>
+            </div>
+          </article></div>
+        </div>
+      </section>
       <section id="method">
         <div class="shell">
           <div class="sec-head rv">
-            <span class="num">02 / the rules</span>
+            <span class="num">03 / the rules</span>
             <h2>Three things <em>are true</em></h2>
             <p>The constraints are the whole point. Take one away and it stops being an experiment.</p>
           </div>
@@ -825,7 +941,7 @@ Every piece was formatted for:
       <section id="ledger">
         <div class="shell">
           <div class="sec-head rv">
-            <span class="num">03 / the index</span>
+            <span class="num">04 / the index</span>
             <h2>The <em>ledger</em></h2>
             <p>Everything we have dared to put on the internet, newest first.</p>
           </div>
@@ -843,14 +959,9 @@ Every piece was formatted for:
                 </svg>
               </span>
             </a>
-            <div class="row rv" style="--d:0.1s">
-              <span class="ix">002</span>
-              <span class="title" style="color:var(--muted)">Reserved <span class="sub"><em>— next model in line</em></span></span>
-              <span class="cell wide-only">awaiting a prompt</span>
-              <span class="cell file">&mdash;.html</span>
-              <span class="cell wide-only">queued</span>
-              <span class="go" style="color:var(--faint)">soon</span>
-            </div>
+            <a class="row rv" style="--d:0.1s" href="https://miaai-lab.github.io/Claude-Fable-5.1-Beautiful-HTML/" target="_blank" rel="noopener"><span class="ix">002</span><span class="title">Synesthesia <span class="sub"><em>&mdash; a fluid you can hear</em></span></span><span class="cell wide-only">Claude Fable 5.1 &middot; high effort</span><span class="cell file">index.html</span><span class="cell wide-only">external &middot; 2026-09-04</span><span class="go">Open <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17 L17 7 M9 7 L17 7 L17 15"></path></svg></span></a>
+            <a class="row rv" style="--d:0.16s" href="https://miaai-lab.github.io/Ox-Alpha-Beutiful-HTML/" target="_blank" rel="noopener"><span class="ix">003</span><span class="title">AETHER <span class="sub"><em>&mdash; a cathedral of pure mathematics</em></span></span><span class="cell wide-only">Ox Alpha</span><span class="cell file">index.html</span><span class="cell wide-only">external &middot; 2026-08-25</span><span class="go">Open <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 17 L17 7 M9 7 L17 7 L17 15"></path></svg></span></a>
+            <div class="row rv" style="--d:0.22s"><span class="ix">004</span><span class="title" style="color:var(--muted)">Reserved <span class="sub"><em>&mdash; next model in line</em></span></span><span class="cell wide-only">awaiting a prompt</span><span class="cell file">&mdash;.html</span><span class="cell wide-only">queued</span><span class="go" style="color:var(--faint)">soon</span></div>
           </div>
         </div>
       </section>
@@ -869,6 +980,10 @@ Every piece was formatted for:
             <a href="https://github.com/MiaAI-Lab/Most-Beautiful-HTML-Experiments" rel="noopener">Repository</a>
             &nbsp;&middot;&nbsp;
             <a href="./astra-high.html">PRISM by GPT 6.0 Astra (high effort)</a>
+            &nbsp;&middot;&nbsp;
+<a href="https://miaai-lab.github.io/Claude-Fable-5.1-Beautiful-HTML/" rel="noopener">Synesthesia by Claude Fable 5.1</a>
+            &nbsp;&middot;&nbsp;
+<a href="https://miaai-lab.github.io/Ox-Alpha-Beutiful-HTML/" rel="noopener">AETHER by Ox Alpha</a>
           </p>
           <p>© 2026 &middot; no cookies, no trackers, no analytics.</p>
         </div>
