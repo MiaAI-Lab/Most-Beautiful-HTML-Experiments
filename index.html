@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#090909">
+<meta name="description" content="An archive of the most beautiful HTML files language models could make. One prompt, one model, one self-contained file.">
+<title>The Most Beautiful HTML Experiments — an archive of light, made in one file</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='64' height='64' rx='15' fill='%23090909'/%3E%3Cpath d='M32 12 54 50H10Z' fill='none' stroke='%23ff815e' stroke-width='3'/%3E%3Cpath d='M2 32h16M46 24h16M46 32h16M46 40h16' stroke='%23ffd08a' stroke-width='3'/%3E%3C/svg%3E">
+<style>
+  /* ──────────────────────────────────────────────────────────────
+     THE MOST BEAUTIFUL HTML EXPERIMENTS
+     one document · no build step · no dependencies · no script
+     ────────────────────────────────────────────────────────────── */
+
+  :root {
+    --bg: #090909;
+    --fg: #f1f0eb;
+    --muted: #a3a19e;
+    --faint: #6d6b69;
+    --line: #ffffff26;
+    --line-soft: #ffffff12;
+    --accent: #ff815e;
+    --rose: #ff3b6b;
+    --ember: #ff815e;
+    --amber: #ffd08a;
+    --mint: #6fe3c8;
+    --azure: #6ab7ff;
+    --iris: #b78cff;
+    --sans: 'DM Sans', ui-sans-serif, 'Segoe UI', system-ui, sans-serif;
+    --serif: 'Instrument Serif', 'Georgia', 'Times New Roman', serif;
+    --mono: ui-monospace, 'SF Mono', 'Cascadia Mono', 'JetBrains Mono', monospace;
+    --pad: clamp(20px, 5vw, 84px);
+    --max: 1240px;
+    --ease: cubic-bezier(0.16, 0.84, 0.24, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--sans);
+    font-size: clamp(15px, 0.35vw + 13px, 17.5px);
+    line-height: 1.62;
+    letter-spacing: -0.006em;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--accent); color: #080808; }
+
+  a { color: inherit; }
+  img, svg { display: block; max-width: 100%; }
+
+  .skip {
+    position: fixed; z-index: 100; top: 10px; left: 10px;
+    padding: 10px 16px; background: var(--fg); color: #080808;
+    border-radius: 999px; font-size: 13px; font-weight: 700;
+    text-decoration: none; transform: translateY(-160%);
+    transition: transform 0.24s ease;
+  }
+  .skip:focus { transform: none; }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  /* ── atmosphere ─────────────────────────────────────────────── */
+
+  .sky { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+
+  .sky::before,
+  .sky::after {
+    content: ''; position: absolute; border-radius: 50%;
+    filter: blur(88px); opacity: 0.5; will-change: transform;
+  }
+  .sky::before {
+    width: 62vmax; height: 62vmax; left: -18vmax; top: -24vmax;
+    background: radial-gradient(circle at 30% 30%, #ff815e4d, #ff3b6b24 42%, transparent 70%);
+    animation: drift 34s ease-in-out infinite alternate;
+  }
+  .sky::after {
+    width: 56vmax; height: 56vmax; right: -16vmax; bottom: -22vmax;
+    background: radial-gradient(circle at 70% 60%, #6ab7ff3d, #b78cff26 45%, transparent 72%);
+    animation: drift 44s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes drift {
+    from { transform: translate3d(-3%, -2%, 0) scale(1); }
+    to   { transform: translate3d(6%, 5%, 0) scale(1.12); }
+  }
+
+  .beam {
+    position: fixed; z-index: 0; pointer-events: none;
+    inset: -30% -10% auto -10%; height: 96vh; opacity: 0.5;
+    background:
+      conic-gradient(from 210deg at 18% 8%, #ff3b6b00, #ff815e40, #ffd08a33, #6fe3c800 28%, #0000 60%),
+      linear-gradient(160deg, #ffffff0b, #0000 42%);
+    mask-image: radial-gradient(120% 80% at 50% -10%, #000 0%, transparent 72%);
+    animation: sweep 46s linear infinite;
+  }
+  @keyframes sweep {
+    0%   { transform: translateX(-6%) rotate(-1.2deg); }
+    50%  { transform: translateX(6%)  rotate(1.2deg); }
+    100% { transform: translateX(-6%) rotate(-1.2deg); }
+  }
+
+  /* film grain, built from dots so no asset is needed */
+  .grain {
+    position: fixed; inset: -30%; z-index: 60; pointer-events: none;
+    opacity: 0.4; mix-blend-mode: soft-light; will-change: transform;
+    background-image:
+      radial-gradient(#ffffffb3 0.5px, #0000 0.62px),
+      radial-gradient(#ffffff8c 0.5px, #0000 0.6px),
+      radial-gradient(#000000a6 0.5px, #0000 0.66px);
+    background-size: 3px 3px, 5px 5px, 7px 7px;
+    background-position: 0 0, 2px 1px, 1px 3px;
+    animation: grain-shift 0.9s steps(4) infinite;
+  }
+  @keyframes grain-shift {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(-1px, 1px); }
+    50%  { transform: translate(1px, -1px); }
+    75%  { transform: translate(-1px, -1px); }
+    100% { transform: translate(0, 0); }
+  }
+
+  .vignette {
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background: radial-gradient(120% 90% at 50% 40%, #0000 42%, #000000b3 100%);
+  }
+
+  .wrap { position: relative; z-index: 2; }
+  .shell { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--pad); }
+
+  /* ── reveals (pure css, no script) ──────────────────────────── */
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translate3d(0, 26px, 0); }
+    to   { opacity: 1; transform: none; }
+  }
+  .rv {
+    opacity: 1;
+    animation: fade-up 0.95s var(--ease) var(--d, 0s) both;
+  }
+  @supports (animation-timeline: view()) {
+    .rv {
+      animation-timeline: view();
+      animation-range: entry 6% cover 30%;
+      animation-delay: 0s;
+    }
+  }
+
+  /* ── type helpers ───────────────────────────────────────────── */
+
+  .kicker {
+    display: inline-flex; align-items: center; gap: 10px; margin: 0;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.24em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+    box-shadow: 0 0 0 0 #ff815e8c; animation: pulse 2.6s ease-out infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 #ff815e8c; }
+    70% { box-shadow: 0 0 0 12px #ff815e00; }
+    100% { box-shadow: 0 0 0 0 #ff815e00; }
+  }
+
+  em, .ital { font-family: var(--serif); font-style: italic; font-weight: 400; }
+  .sub { color: var(--muted); font-family: var(--sans); font-style: normal; font-size: 0.62em; letter-spacing: -0.004em; }
+
+  /* ── masthead ───────────────────────────────────────────────── */
+
+  .mast {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: blur(14px) saturate(1.4);
+    background: #090909b3; border-bottom: 1px solid var(--line-soft);
+  }
+  .mast .shell { display: flex; align-items: center; gap: 18px; padding-block: 15px; }
+  .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; margin-right: auto; }
+  .brand svg { width: 26px; height: 26px; overflow: visible; }
+  .brand b { font-family: var(--serif); font-weight: 400; font-size: 19px; letter-spacing: -0.01em; }
+  .brand span.tag {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--faint); border: 1px solid var(--line); border-radius: 999px;
+    padding: 3px 8px 2px;
+  }
+  .nav { display: flex; gap: clamp(12px, 2vw, 30px); font-size: 13px; }
+  .nav a {
+    color: var(--muted); text-decoration: none; position: relative; padding-block: 4px;
+    transition: color 0.3s ease;
+  }
+  .nav a::after {
+    content: ''; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px;
+    background: var(--accent); transition: right 0.35s var(--ease);
+  }
+  .nav a:hover { color: var(--fg); }
+  .nav a:hover::after { right: 0; }
+  @media (max-width: 640px) { .nav { display: none; } }
+
+  /* ── hero ───────────────────────────────────────────────────── */
+
+  .hero { padding-block: clamp(52px, 7.5vw, 128px) clamp(38px, 5vw, 84px); }
+  .hero-grid { display: grid; gap: clamp(28px, 5vw, 64px); grid-template-columns: minmax(0, 1fr); }
+  @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.36fr 0.64fr; align-items: end; } }
+
+  h1 { margin: 18px 0 0; font-weight: 400; line-height: 0.92; letter-spacing: -0.035em; }
+  h1 > span { display: block; }
+  .h-a { font-size: clamp(30px, 6.6vw, 74px); color: var(--muted); }
+  .h-b {
+    font-family: var(--serif); font-style: italic;
+    font-size: clamp(62px, 15.4vw, 178px);
+    background: linear-gradient(100deg, #f1f0eb 0%, #f1f0eb 34%, var(--amber) 45%, var(--ember) 51%, var(--rose) 56%, var(--iris) 61%, var(--azure) 66%, #f1f0eb 78%, #f1f0eb 100%);
+    background-size: 260% 100%;
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent; animation: shine 9s cubic-bezier(0.6, 0, 0.4, 1) -3.6s infinite;
+    padding-right: 0.06em;
+  }
+  @keyframes shine {
+    0%, 100% { background-position: 160% 0; }
+    30%, 65% { background-position: -60% 0; }
+  }
+  .h-c {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: clamp(12px, 2.4vw, 26px);
+    font-size: clamp(26px, 5.2vw, 58px); margin-top: 0.06em;
+  }
+  .h-c .mark { text-decoration: none; position: relative; color: var(--fg); }
+  .h-c .mark::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0.1em; height: 3px;
+    background: linear-gradient(90deg, var(--rose), var(--ember), var(--amber), var(--mint), var(--azure), var(--iris));
+    border-radius: 3px; opacity: 0.92; transform-origin: left center;
+    animation: draw 1.5s 0.5s var(--ease) both;
+  }
+  @keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+  .h-c small {
+    font-family: var(--sans); font-size: clamp(11px, 1.1vw, 13px); font-weight: 700;
+    letter-spacing: 0.26em; text-transform: uppercase; color: var(--faint);
+  }
+
+  .lede {
+    max-width: 54ch; color: var(--muted); font-size: clamp(16px, 1.4vw, 20px);
+    margin: clamp(22px, 2.8vw, 38px) 0 0;
+  }
+  .lede b { color: var(--fg); font-weight: 500; }
+
+  .wow {
+    display: flex; flex-wrap: wrap; gap: 0.42em; margin: clamp(22px, 2.8vw, 34px) 0 0;
+    font-family: var(--serif); font-style: italic; font-size: clamp(19px, 2.1vw, 29px); line-height: 1.2;
+  }
+  .wow span { color: var(--faint); animation: gasp 4.8s ease-in-out infinite both; }
+  .wow span:nth-child(2) { animation-delay: 0.34s; color: var(--muted); }
+  .wow span:nth-child(3) { animation-delay: 0.68s; color: var(--amber); }
+  .wow span:nth-child(4) { animation-delay: 1.02s; color: var(--ember); }
+  @keyframes gasp {
+    0%, 62%, 100% { opacity: 0.26; transform: translateY(0.14em); }
+    14%, 30% { opacity: 1; transform: none; }
+  }
+
+  .facts {
+    display: flex; flex-wrap: wrap; margin: clamp(30px, 4vw, 52px) 0 0;
+    border: 1px solid var(--line-soft); border-radius: 14px; overflow: hidden;
+    background: #ffffff07;
+  }
+  .facts > div { flex: 1 1 132px; padding: 15px 18px; border-right: 1px solid var(--line-soft); }
+  .facts > div:last-child { border-right: 0; }
+  .facts dt {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faint); font-weight: 700;
+  }
+  .facts dd { margin: 6px 0 0; font-size: 15px; font-weight: 500; }
+  .facts dd em { font-size: 16px; }
+
+  .cardboard {
+    position: relative; margin: 0; padding: clamp(20px, 2.4vw, 28px) clamp(22px, 2.6vw, 32px);
+    font-family: var(--mono); font-size: clamp(10.8px, 0.84vw, 12.4px); line-height: 1.72;
+    color: var(--muted); white-space: pre-wrap;
+    background: linear-gradient(178deg, #16140f, #0d0c0b 72%);
+    border: 1px solid var(--line-soft); border-radius: 16px;
+    box-shadow: 0 30px 70px -34px #000, inset 0 1px 0 #ffffff0f;
+  }
+  .cardboard::before {
+    content: ''; position: absolute; inset: 6px; border: 1px dashed #ffffff17;
+    border-radius: 11px; pointer-events: none;
+  }
+  .cardboard b { color: var(--fg); font-weight: 700; }
+  .cardboard i { color: var(--accent); font-style: normal; }
+  .cardboard .stamp {
+    display: inline-block; margin-bottom: 14px; padding: 4px 10px 3px;
+    font-size: 9.5px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: #080808; background: var(--amber); border-radius: 999px; font-weight: 700;
+  }
+
+  /* ── ribbon ─────────────────────────────────────────────────── */
+
+  .ribbon {
+    position: relative; overflow: hidden; padding-block: 15px;
+    border-block: 1px solid var(--line-soft); background: #ffffff05;
+    mask-image: linear-gradient(90deg, #0000, #000 8%, #000 92%, #0000);
+  }
+  .ribbon-track {
+    display: inline-flex; gap: 26px; white-space: nowrap;
+    animation: marquee 34s linear infinite; will-change: transform;
+  }
+  .ribbon:hover .ribbon-track { animation-play-state: paused; }
+  .ribbon span { font-family: var(--serif); font-size: 15px; color: var(--muted); }
+  .ribbon span:nth-child(3n) { color: var(--accent); font-style: italic; }
+  .ribbon span::after { content: ' ✳'; color: var(--faint); }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ── sections ───────────────────────────────────────────────── */
+
+  section { padding-block: clamp(58px, 7vw, 116px); }
+  .sec-head {
+    display: flex; flex-wrap: wrap; align-items: flex-end; gap: 14px 24px;
+    margin-bottom: clamp(28px, 3.6vw, 52px);
+  }
+  .sec-head h2 {
+    margin: 0; font-family: var(--serif); font-weight: 400;
+    font-size: clamp(30px, 5.2vw, 58px); line-height: 1.02; letter-spacing: -0.024em;
+  }
+  .sec-head h2 em { color: var(--accent); }
+  .sec-head p { margin: 0; color: var(--muted); max-width: 40ch; font-size: 15px; }
+  .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em; color: var(--faint); margin-right: auto; }
+
+  /* ── the piece ──────────────────────────────────────────────── */
+
+  .piece {
+    position: relative; border: 1px solid var(--line-soft); border-radius: 22px;
+    background: linear-gradient(180deg, #141312, #0c0b0b); overflow: hidden;
+    box-shadow: 0 60px 120px -60px #000;
+  }
+  .piece::before {
+    content: ''; position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: 0;
+    background: radial-gradient(420px 420px at 50% 12%, #ff815e1f, #0000 66%);
+    transition: opacity 0.6s ease;
+  }
+  .piece:hover::before { opacity: 1; }
+
+  .piece-bar {
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    padding: 14px clamp(18px, 2.4vw, 30px); border-bottom: 1px solid var(--line-soft);
+    background: #ffffff06; font-size: 11px; letter-spacing: 0.17em; text-transform: uppercase;
+    color: var(--muted); font-weight: 700;
+  }
+  .piece-bar .id { font-family: var(--mono); color: var(--accent); letter-spacing: 0.1em; }
+  .piece-bar .live { display: inline-flex; align-items: center; gap: 8px; margin-left: auto; color: var(--mint); }
+  .piece-bar .live b {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--mint);
+    box-shadow: 0 0 10px var(--mint); animation: pulse 2.2s ease-out infinite;
+  }
+
+  .piece-body {
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(26px, 4vw, 54px);
+    padding: clamp(24px, 4vw, 46px) clamp(18px, 2.4vw, 30px);
+  }
+  @media (min-width: 940px) { .piece-body { grid-template-columns: 1.05fr 0.95fr; align-items: center; } }
+
+  .plate {
+    position: relative; border-radius: 18px; overflow: hidden; margin: 0;
+    background:
+      radial-gradient(88% 120% at 12% 8%, #1b1713, #0000 60%),
+      linear-gradient(170deg, #100e0d, #080808);
+    border: 1px solid var(--line-soft);
+  }
+  .plate svg { width: 100%; height: auto; }
+  .plate::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: linear-gradient(104deg, #0000 38%, #ffffff0d 48%, #0000 58%);
+    transform: translateX(-40%); animation: scan 7.5s cubic-bezier(0.7, 0, 0.3, 1) infinite;
+  }
+  @keyframes scan {
+    0%, 62% { transform: translateX(-45%); }
+    86%, 100% { transform: translateX(45%); }
+  }
+  .plate-cap {
+    display: flex; justify-content: space-between; gap: 12px; padding: 11px 14px;
+    border-top: 1px solid var(--line-soft); font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 0.08em; color: var(--faint); text-transform: uppercase;
+  }
+
+  .beam-in { animation: glide 7s ease-in-out infinite; transform-box: fill-box; }
+  @keyframes glide { 0%, 100% { opacity: 0.62; } 50% { opacity: 1; } }
+  .fan polygon {
+    opacity: 0.62; transform-box: fill-box; transform-origin: left center;
+    animation: breathe 5.6s ease-in-out infinite;
+  }
+  .fan polygon:nth-child(1) { animation-delay: 0s; }
+  .fan polygon:nth-child(2) { animation-delay: 0.22s; }
+  .fan polygon:nth-child(3) { animation-delay: 0.44s; }
+  .fan polygon:nth-child(4) { animation-delay: 0.66s; }
+  .fan polygon:nth-child(5) { animation-delay: 0.88s; }
+  .fan polygon:nth-child(6) { animation-delay: 1.1s; }
+  @keyframes breathe {
+    0%, 100% { opacity: 0.5; transform: scaleX(0.965) rotate(-0.5deg); }
+    50% { opacity: 0.95; transform: scaleX(1) rotate(0.5deg); }
+  }
+  .glass-body { animation: turn 24s linear infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes turn { 0%, 100% { transform: rotate(-1.4deg); } 50% { transform: rotate(1.4deg); } }
+  .spark { animation: twinkle 4s ease-in-out infinite; }
+  .spark:nth-child(2) { animation-delay: 1.1s; }
+  .spark:nth-child(3) { animation-delay: 2.2s; }
+  @keyframes twinkle { 0%, 100% { opacity: 0.15; } 50% { opacity: 0.9; } }
+
+  .meta-list { list-style: none; margin: 0 0 22px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .meta-list li {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700;
+    color: var(--muted); border: 1px solid var(--line-soft); border-radius: 999px; padding: 5px 12px 4px;
+  }
+  .h-plate {
+    margin: 0; font-family: var(--serif); font-weight: 400; letter-spacing: -0.024em;
+    font-size: clamp(34px, 5.4vw, 62px); line-height: 1.04;
+  }
+  .h-plate em { color: var(--amber); }
+  .byline { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 16px 0 0; font-size: 14px; color: var(--muted); }
+  .byline .model {
+    display: inline-flex; align-items: center; gap: 9px; color: var(--fg);
+    font-weight: 700; font-size: 15.5px;
+  }
+  .byline .model svg { width: 17px; height: 17px; }
+  .chip {
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 9px 3px; border-radius: 6px; color: var(--amber);
+    background: #ffd08a1c; border: 1px solid #ffd08a33;
+  }
+  .desc { color: var(--muted); margin: 18px 0 0; max-width: 46ch; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: clamp(24px, 2.6vw, 36px); }
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px; text-decoration: none;
+    padding: 15px 24px 14px; border-radius: 999px; font-size: 14px; font-weight: 700;
+    border: 1px solid transparent; position: relative;
+    transition: transform 0.4s var(--ease), box-shadow 0.4s ease, background 0.4s ease, border-color 0.4s ease;
+  }
+  .btn:hover { transform: translateY(-3px); }
+  .btn .arw { transition: transform 0.4s var(--ease); }
+  .btn:hover .arw { transform: translate(3px, -3px); }
+  .btn-primary {
+    color: #080808; background: linear-gradient(100deg, var(--amber), var(--ember) 55%, var(--rose));
+    box-shadow: 0 16px 40px -18px #ff815eb0;
+  }
+  .btn-primary:hover { box-shadow: 0 24px 54px -18px #ff815ed1; }
+  .btn-ghost { color: var(--fg); border-color: var(--line); background: #ffffff07; }
+  .btn-ghost:hover { border-color: var(--accent); background: #ff815e14; }
+  .btn small { font-family: var(--mono); font-weight: 400; font-size: 11px; opacity: 0.72; }
+
+  /* ── the prompt ─────────────────────────────────────────────── */
+
+  .prompt-wrap {
+    margin-top: clamp(24px, 2.5vw, 38px); padding: clamp(18px, 2.2vw, 26px) clamp(18px, 2.4vw, 30px);
+    border-top: 1px solid var(--line-soft); background: #070707;
+  }
+  .prompt-head {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 0 0 14px;
+    font-size: 10.5px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--faint);
+  }
+  .prompt-head .tag { color: var(--accent); }
+  blockquote.prompt {
+    margin: 0; padding: 0 0 0 clamp(16px, 2vw, 24px); border-left: 2px solid var(--accent);
+    font-family: var(--serif); font-size: clamp(17px, 1.9vw, 24px); line-height: 1.5; color: var(--fg);
+  }
+  blockquote.prompt p { margin: 0 0 0.5em; }
+  blockquote.prompt p:last-child { margin-bottom: 0; }
+  blockquote.prompt q { font-style: italic; quotes: '“' '”'; color: var(--amber); }
+
+  /* ── method ─────────────────────────────────────────────────── */
+
+  .steps {
+    display: grid; gap: 1px; grid-template-columns: minmax(0, 1fr);
+    background: var(--line-soft); border: 1px solid var(--line-soft);
+    border-radius: 18px; overflow: hidden;
+  }
+  @media (min-width: 760px) { .steps { grid-template-columns: repeat(3, 1fr); } }
+  .step { position: relative; padding: clamp(24px, 3vw, 40px); background: #0b0a0a; transition: background 0.5s ease; }
+  .step:hover { background: #141211; }
+  .step h3 { margin: 14px 0 8px; font-family: var(--serif); font-weight: 400; font-size: clamp(21px, 2.3vw, 27px); letter-spacing: -0.018em; }
+  .step p { margin: 0; color: var(--muted); font-size: 14.5px; }
+  .step .ix { font-family: var(--mono); font-size: 11px; color: var(--accent); letter-spacing: 0.14em; }
+  .step::after {
+    content: ''; position: absolute; left: 0; top: 0; height: 1px; width: 0;
+    background: linear-gradient(90deg, var(--rose), var(--amber), var(--azure));
+    transition: width 0.7s var(--ease);
+  }
+  .step:hover::after { width: 100%; }
+
+  /* ── ledger ─────────────────────────────────────────────────── */
+
+  .ledger { border-top: 1px solid var(--line); }
+  .row {
+    display: grid; gap: 6px 18px; padding: clamp(18px, 2.4vw, 26px) 4px;
+    border-bottom: 1px solid var(--line-soft); text-decoration: none; position: relative;
+    grid-template-columns: 1fr auto; align-items: center;
+    transition: padding-inline 0.5s var(--ease), background 0.5s ease;
+  }
+  .row:hover { padding-inline: clamp(10px, 1.6vw, 18px); background: linear-gradient(90deg, #ff815e12, #0000 60%); }
+  @media (min-width: 860px) { .row { grid-template-columns: 62px 1.5fr 1fr auto auto auto; } }
+  .row .ix { font-family: var(--mono); font-size: 12px; color: var(--faint); }
+  .row .title { font-family: var(--serif); font-size: clamp(20px, 2.4vw, 28px); }
+  .row .title .sub em { color: var(--accent); font-size: 0.86em; }
+  .row .cell { color: var(--muted); font-size: 13.5px; }
+  .row .file { font-family: var(--mono); font-size: 12.5px; color: var(--mint); }
+  .row .go {
+    justify-self: end; display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg);
+  }
+  .row .go svg { transition: transform 0.45s var(--ease); }
+  .row:hover .go svg { transform: translate(4px, -4px); }
+  .wide-only { display: none; }
+  @media (min-width: 860px) { .wide-only { display: block; } }
+
+  /* ── footer ─────────────────────────────────────────────────── */
+
+  footer {
+    border-top: 1px solid var(--line-soft);
+    padding-block: clamp(44px, 5vw, 78px) clamp(34px, 4vw, 56px);
+    position: relative; z-index: 2;
+  }
+  .foot-big {
+    margin: 0; font-family: var(--serif); font-weight: 400;
+    font-size: clamp(28px, 6vw, 66px); line-height: 1.06; letter-spacing: -0.03em; max-width: 22ch;
+  }
+  .foot-big em { color: var(--accent); }
+  .foot-grid {
+    display: flex; flex-wrap: wrap; gap: 18px 40px; align-items: flex-end;
+    margin-top: clamp(28px, 3.4vw, 48px); padding-top: 22px; border-top: 1px solid var(--line-soft);
+    font-size: 13px; color: var(--faint);
+  }
+  .foot-grid p { margin: 0; max-width: 42ch; }
+  .foot-grid a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .foot-grid a:hover { color: var(--accent); border-color: var(--accent); }
+  .foot-grid code { font-family: var(--mono); font-size: 12px; color: var(--mint); }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001s !important; animation-iteration-count: 1 !important;
+      transition-duration: 0.001s !important;
+    }
+    .rv { animation: none; opacity: 1; transform: none; }
+    .h-b { -webkit-background-clip: border-box; background-clip: border-box; color: var(--fg); background: none; }
+    .grain, .sky::before, .sky::after, .beam { animation: none; }
+  }
+
+  /* small screens: keep the section heads honest */
+  @media (max-width: 700px) {
+    .sec-head { flex-direction: column; align-items: flex-start; }
+    .sec-head .num { margin-right: 0; }
+    .ribbon span { font-size: 14px; }
+    .plate-cap { flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+  <a class="skip" href="#collection">Skip to the collection</a>
+
+  <div class="sky" aria-hidden="true"></div>
+  <div class="beam" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+
+  <div class="wrap">
+
+    <header class="mast">
+      <div class="shell">
+        <a class="brand" href="./index.html">
+          <svg viewBox="0 0 64 64" aria-hidden="true">
+            <path d="M32 8 58 54H6Z" fill="none" stroke="#ff815e" stroke-width="3" stroke-linejoin="round"></path>
+            <path d="M0 31h16" stroke="#f1f0eb" stroke-width="3"></path>
+            <path d="M44 21h20M44 31h20M44 41h20" stroke="#ffd08a" stroke-width="3" stroke-linecap="round"></path>
+          </svg>
+          <b>Most Beautiful HTML</b>
+          <span class="tag">Experiments</span>
+        </a>
+        <nav class="nav" aria-label="Sections">
+          <a href="#collection">The collection</a>
+          <a href="#method">Method</a>
+          <a href="#ledger">Ledger</a>
+          <a href="https://github.com/MiaAI-Lab/Most-Beautiful-HTML-Experiments" rel="noopener">Source</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+
+      <div class="shell">
+        <div class="hero">
+          <div class="hero-grid">
+            <div>
+              <p class="kicker rv"><span class="dot"></span> A living archive &middot; GitHub Pages &middot; no build step</p>
+
+              <h1>
+                <span class="h-a rv" style="--d:0.06s">The most</span>
+                <span class="h-b rv" style="--d:0.12s">beautiful</span>
+                <span class="h-c rv" style="--d:0.18s">
+                  <span class="mark">HTML</span>
+                  <small>experiments &middot; vol. 01</small>
+                </span>
+              </h1>
+
+              <p class="lede rv" style="--d:0.26s">
+                Every entry here begins as a single sentence and ends as a <b>single self-contained
+                .html file</b> — no frameworks, no assets, no second chances. One language model,
+                one prompt, asked for the most gorgeous thing it can imagine.
+                Whatever survives the look gets archived.
+              </p>
+
+              <p class="wow rv" style="--d:0.32s" aria-label="the reaction we are going for">
+                <span>“WOW!!!”</span><span>“WOW!!!”</span><span>“WOW!!!”</span><span>“WOW!!!”</span>
+              </p>
+
+              <dl class="facts rv" style="--d:0.38s">
+                <div><dt>Pieces indexed</dt><dd>01 &amp; counting</dd></div>
+                <div><dt>Latest</dt><dd><em>Astra</em></dd></div>
+                <div><dt>Format</dt><dd>one file, portable</dd></div>
+                <div><dt>Dependencies</dt><dd>none. truly.</dd></div>
+              </dl>
+            </div>
+
+            <pre class="cardboard rv" style="--d:0.3s">
+<span class="stamp">suitable for the eyes</span>
+This archive was created, typed,
+spelled, and proofread
+in one day.
+
+Although it took four,
+and was also caught in two,
+and slipped at six,
+and was also lost at nine.
+
+Every piece was formatted for:
+  <b>the eyes</b>
+  <i>also suitable for the heart</i></pre>
+          </div>
+        </div>
+      </div>
+
+      <div class="ribbon" aria-hidden="true">
+        <div class="ribbon-track">
+          <span>less noise, more wonder</span><span>one prompt, one file</span><span>made of light</span><span>no build step</span><span>open it and stare</span><span>nothing ordinary about it</span>
+          <span>less noise, more wonder</span><span>one prompt, one file</span><span>made of light</span><span>no build step</span><span>open it and stare</span><span>nothing ordinary about it</span>
+        </div>
+      </div>
+
+      <section id="collection">
+        <div class="shell">
+          <div class="sec-head rv">
+            <span class="num">01 / now showing</span>
+            <h2>The <em>latest</em> piece</h2>
+            <p>Fresh from the model, unedited by human hands, published the moment it rendered.</p>
+          </div>
+
+          <article class="piece rv" style="--d:0.08s">
+            <div class="piece-bar">
+              <span class="id">№ 001</span>
+              <span>study in light</span>
+              <span class="live"><b></b> live on Pages</span>
+            </div>
+
+            <div class="piece-body">
+              <figure class="plate">
+                <svg viewBox="0 0 640 330" role="img" aria-label="A beam of white light entering a glass prism and fanning out into six coloured beams">
+                  <defs>
+                    <lineargradient id="whiteBeam" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#ffffff" stop-opacity="0"></stop>
+                      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.6"></stop>
+                      <stop offset="1" stop-color="#ffffff" stop-opacity="0.95"></stop>
+                    </lineargradient>
+                    <lineargradient id="glassFill" x1="0" y1="0" x2="0.4" y2="1">
+                      <stop offset="0" stop-color="#ffffff" stop-opacity="0.2"></stop>
+                      <stop offset="0.55" stop-color="#ffd08a" stop-opacity="0.1"></stop>
+                      <stop offset="1" stop-color="#6ab7ff" stop-opacity="0.16"></stop>
+                    </lineargradient>
+                    <radialgradient id="halo" cx="0.5" cy="0.5" r="0.5">
+                      <stop offset="0" stop-color="#ffd08a" stop-opacity="0.4"></stop>
+                      <stop offset="1" stop-color="#ffd08a" stop-opacity="0"></stop>
+                    </radialgradient>
+                    <filter id="blurA" x="-45%" y="-45%" width="190%" height="190%">
+                      <fegaussianblur stdDeviation="6"></fegaussianblur>
+                    </filter>
+                    <filter id="blurB" x="-60%" y="-60%" width="220%" height="220%">
+                      <fegaussianblur stdDeviation="15"></fegaussianblur>
+                    </filter>
+                  </defs>
+
+                  <ellipse cx="330" cy="168" rx="180" ry="120" fill="url(#halo)" opacity="0.55"></ellipse>
+
+                  <g class="beam-in">
+                    <rect x="0" y="146" width="268" height="26" fill="url(#whiteBeam)" filter="url(#blurA)"></rect>
+                    <rect x="120" y="155" width="148" height="6" fill="#ffffff" opacity="0.9"></rect>
+                  </g>
+
+                  <g class="glass-body">
+                    <polygon points="330,58 404,240 256,240" fill="url(#glassFill)"></polygon>
+                    <polygon points="330,58 404,240 256,240" fill="none" stroke="#f1f0eb" stroke-opacity="0.55" stroke-width="2" stroke-linejoin="round"></polygon>
+                    <path d="M330 58 L296 176" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1.5" fill="none"></path>
+                    <path d="M330 58 L366 190" stroke="#ffffff" stroke-opacity="0.18" stroke-width="1.5" fill="none"></path>
+                  </g>
+
+                  <g class="fan" filter="url(#blurB)">
+                    <polygon points="388,163 388,173 640,36 640,20" fill="#ff3b6b"></polygon>
+                    <polygon points="388,165 388,175 640,90 640,72" fill="#ff815e"></polygon>
+                    <polygon points="388,167 388,177 640,142 640,126" fill="#ffd08a"></polygon>
+                    <polygon points="388,169 388,179 640,196 640,180" fill="#6fe3c8"></polygon>
+                    <polygon points="388,171 388,181 640,248 640,232" fill="#6ab7ff"></polygon>
+                    <polygon points="388,173 388,183 640,302 640,286" fill="#b78cff"></polygon>
+                  </g>
+
+                  <g fill="#ffffff">
+                    <circle class="spark" cx="470" cy="60" r="2"></circle>
+                    <circle class="spark" cx="556" cy="182" r="2.4"></circle>
+                    <circle class="spark" cx="614" cy="256" r="1.8"></circle>
+                  </g>
+
+                  <line x1="24" y1="292" x2="616" y2="292" stroke="#ffffff" stroke-opacity="0.14"></line>
+                  <g fill="#ffffff" fill-opacity="0.32" font-family="ui-monospace, monospace" font-size="9" letter-spacing="1.6">
+                    <text x="24" y="312">λ 380 · 450 · 520 · 590 · 660 · 740 nm</text>
+                    <text x="470" y="312">refraction, no. 001</text>
+                  </g>
+                </svg>
+                <figcaption class="plate-cap">
+                  <span>plate 001 &middot; refraction study</span>
+                  <span>rendered in one file</span>
+                </figcaption>
+              </figure>
+
+              <div>
+                <ul class="meta-list">
+                  <li>canvas</li><li>motion</li><li>generative</li><li>ambient sound</li>
+                </ul>
+
+                <h3 class="h-plate">PRISM <em>— a study in light</em></h3>
+
+                <p class="byline">
+                  <span class="model">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="#ff815e" stroke-width="1.7" stroke-linejoin="round">
+                      <path d="M12 2 L21 20 L3 20 Z"></path><path d="M12 2 L12 20"></path>
+                    </svg>
+                    GPT&nbsp;6.0&nbsp;Astra
+                  </span>
+                  <span class="chip">high effort</span>
+                  <span>&middot; first &amp; most recent entry</span>
+                </p>
+
+                <p class="desc">
+                  An immersive study in colour and light: a slow, refracting world of drifting
+                  gradients, living typography and small kindnesses of motion. Open it full screen,
+                  turn the sound on, and let it run for ten seconds before you decide what it is.
+                </p>
+
+                <div class="actions">
+                  <a class="btn btn-primary" href="./astra-high.html">
+                    Enter the piece
+                    <svg class="arw" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+                      <path d="M7 17 L17 7 M9 7 L17 7 L17 15"></path>
+                    </svg>
+                  </a>
+                  <a class="btn btn-ghost" href="./astra-high.html" target="_blank" rel="noopener">
+                    New tab <small>↗</small>
+                  </a>
+                  <a class="btn btn-ghost" href="#prompt">Read the prompt</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="prompt-wrap" id="prompt">
+              <p class="prompt-head">
+                <span class="tag">the prompt</span>
+                <span>verbatim &middot; nothing added &middot; nothing removed</span>
+              </p>
+              <blockquote class="prompt">
+                <p>
+                  <q>Create the most beautiful HTML file you could think of. Something that when people
+                  see it, all they can say is <q>WOW!!!</q> It must be visually impressive, beautiful,
+                  and just music to the eyes. Be thorough, but creative. Don’t make mistakes.</q>
+                </p>
+              </blockquote>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="method">
+        <div class="shell">
+          <div class="sec-head rv">
+            <span class="num">02 / the rules</span>
+            <h2>Three things <em>are true</em></h2>
+            <p>The constraints are the whole point. Take one away and it stops being an experiment.</p>
+          </div>
+          <div class="steps">
+            <div class="step rv" style="--d:0.04s">
+              <span class="ix">01</span>
+              <h3>One prompt, unchanged</h3>
+              <p>Every model gets the same sentence, word for word. No steering, no follow-ups, no “please make it prettier”. Whatever comes back, we take.</p>
+            </div>
+            <div class="step rv" style="--d:0.12s">
+              <span class="ix">02</span>
+              <h3>One file, self-contained</h3>
+              <p>Everything lives inside the document — markup, style, motion, even the fonts. Copy it to a stick, lose the internet, and it still performs.</p>
+            </div>
+            <div class="step rv" style="--d:0.2s">
+              <span class="ix">03</span>
+              <h3>Nobody’s blind</h3>
+              <p>Results are published raw and dated, so you can hold a model’s taste against your own. Judge for yourself. That is the entire method.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ledger">
+        <div class="shell">
+          <div class="sec-head rv">
+            <span class="num">03 / the index</span>
+            <h2>The <em>ledger</em></h2>
+            <p>Everything we have dared to put on the internet, newest first.</p>
+          </div>
+
+          <div class="ledger">
+            <a class="row rv" style="--d:0.04s" href="./astra-high.html">
+              <span class="ix">001</span>
+              <span class="title">PRISM <span class="sub"><em>— a study in light</em></span></span>
+              <span class="cell wide-only">GPT 6.0 Astra &middot; high effort</span>
+              <span class="cell file">astra-high.html</span>
+              <span class="cell wide-only">live &middot; 2026</span>
+              <span class="go">Open
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+                  <path d="M7 17 L17 7 M9 7 L17 7 L17 15"></path>
+                </svg>
+              </span>
+            </a>
+            <div class="row rv" style="--d:0.1s">
+              <span class="ix">002</span>
+              <span class="title" style="color:var(--muted)">Reserved <span class="sub"><em>— next model in line</em></span></span>
+              <span class="cell wide-only">awaiting a prompt</span>
+              <span class="cell file">&mdash;.html</span>
+              <span class="cell wide-only">queued</span>
+              <span class="go" style="color:var(--faint)">soon</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="shell">
+        <p class="foot-big rv">Ready to make you <em>cry</em>, or at least considerably close to it.</p>
+        <div class="foot-grid rv" style="--d:0.1s">
+          <p>
+            Maintained by <a href="https://github.com/MiaAI-Lab" rel="noopener">MiaAI&nbsp;Lab</a>.
+            To add an entry: drop the model’s file at the root of the repo, copy the
+            <code>№ 001</code> blocks, and you are done.
+          </p>
+          <p>
+            <a href="https://github.com/MiaAI-Lab/Most-Beautiful-HTML-Experiments" rel="noopener">Repository</a>
+            &nbsp;&middot;&nbsp;
+            <a href="./astra-high.html">PRISM by GPT 6.0 Astra (high effort)</a>
+          </p>
+          <p>© 2026 &middot; no cookies, no trackers, no analytics.</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
