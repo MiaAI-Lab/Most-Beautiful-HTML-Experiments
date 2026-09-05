@@ -5,7 +5,7 @@ An archive of the most beautiful HTML files language models can make.
 One prompt. One model. One self-contained `.html` file. No frameworks, no build
 step, no post-editing by human hands — whatever survives the look gets archived.
 
-**Live at:** <https://MiaAI-Lab.github.io.io/Most-Beautiful-HTML-Experiments>
+**Live at:** <https://miaai-lab.github.io/Most-Beautiful-HTML-Experiments/>
 
 ## The prompt
 
