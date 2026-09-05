@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#090909">
 <meta name="description" content="An archive of the most beautiful HTML files language models could make. One prompt, one model, one self-contained file.">
-<title>The Most Beautiful HTML Experiments — an archive of light, made in one file</title>
+<title>Mia’s Most Beautiful HTML Experiments</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Instrument+Serif:ital,wght@0,400;1,400&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='64' height='64' rx='15' fill='%23090909'/%3E%3Cpath d='M32 12 54 50H10Z' fill='none' stroke='%23ff815e' stroke-width='3'/%3E%3Cpath d='M2 32h16M46 24h16M46 32h16M46 40h16' stroke='%23ffd08a' stroke-width='3'/%3E%3C/svg%3E">
@@ -551,6 +551,18 @@
     .ribbon span { font-size: 14px; }
     .plate-cap { flex-direction: column; gap: 4px; }
   }
+
+  /* the follow-on-X link */
+  .xlink { display: inline-flex; align-items: center; gap: 7px; text-decoration: none; }
+  .xlink .xm {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 16px; height: 16px; border-radius: 4px; background: var(--fg); color: #080808;
+    font-size: 10px; font-weight: 700; line-height: 1;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.3s var(--ease);
+  }
+  .xlink:hover .xm { background: var(--accent); transform: rotate(-8deg); }
+  .nav .xlink { color: var(--muted); }
+  .nav .xlink:hover { color: var(--fg); }
 </style>
 </head>
 <body>
@@ -571,7 +583,7 @@
             <path d="M0 31h16" stroke="#f1f0eb" stroke-width="3"></path>
             <path d="M44 21h20M44 31h20M44 41h20" stroke="#ffd08a" stroke-width="3" stroke-linecap="round"></path>
           </svg>
-          <b>Most Beautiful HTML</b>
+          <b>Mia’s Most Beautiful HTML</b>
           <span class="tag">Experiments</span>
         </a>
         <nav class="nav" aria-label="Sections">
@@ -579,6 +591,7 @@
           <a href="#method">Method</a>
           <a href="#ledger">Ledger</a>
           <a href="https://github.com/MiaAI-Lab/Most-Beautiful-HTML-Experiments" rel="noopener">Source</a>
+          <a class="xlink" href="https://x.com/MiaAI_lab" rel="noopener me"><span class="xm" aria-hidden="true">&#88;</span>@MiaAI_lab</a>
         </nav>
       </div>
     </header>
@@ -592,7 +605,7 @@
               <p class="kicker rv"><span class="dot"></span> A living archive &middot; GitHub Pages &middot; no build step</p>
 
               <h1>
-                <span class="h-a rv" style="--d:0.06s">The most</span>
+                <span class="h-a rv" style="--d:0.06s">Mia’s most</span>
                 <span class="h-b rv" style="--d:0.12s">beautiful</span>
                 <span class="h-c rv" style="--d:0.18s">
                   <span class="mark">HTML</span>
@@ -848,7 +861,7 @@ Every piece was formatted for:
         <p class="foot-big rv">Ready to make you <em>cry</em>, or at least considerably close to it.</p>
         <div class="foot-grid rv" style="--d:0.1s">
           <p>
-            Maintained by <a href="https://github.com/MiaAI-Lab" rel="noopener">MiaAI&nbsp;Lab</a>.
+            Maintained by <a href="https://github.com/MiaAI-Lab" rel="noopener">MiaAI&nbsp;Lab</a>. Follow <a class="xlink" href="https://x.com/MiaAI_lab" rel="noopener me"><span class="xm" aria-hidden="true">&#88;</span>@MiaAI_lab</a> on X.
             To add an entry: drop the model’s file at the root of the repo, copy the
             <code>№ 001</code> blocks, and you are done.
           </p>

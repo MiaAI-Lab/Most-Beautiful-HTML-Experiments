@@ -1,4 +1,4 @@
-# The Most Beautiful HTML Experiments
+# Mia’s Most Beautiful HTML Experiments
 
 An archive of the most beautiful HTML files language models can make.
 
@@ -43,5 +43,7 @@ Every entry receives this sentence, verbatim:
 - `index.html` and every entry are static documents. Pages needs no workflow, no action, no
   dependencies — there is nothing to install.
 - No cookies, no trackers, no analytics.
+
+Follow along on X: [@MiaAI_lab](https://x.com/MiaAI_lab).
 
 Maintained by [MiaAI Lab](https://github.com/MiaAI-Lab).
