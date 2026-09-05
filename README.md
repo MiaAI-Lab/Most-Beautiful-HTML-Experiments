@@ -39,7 +39,7 @@ Every entry receives this sentence, verbatim:
    `#collection` and the `<a class="row">` in `#ledger` — and update the number, title,
    model name and filename.
 3. An entry does not have to live in this repo. 002 and 003 are each a single file in their own
-   repository, served by their own Pages site &mdash; the archive simply links out to them.
+   repository, served by their own Pages site — the archive simply links out to them.
 3. Push. GitHub Pages serves it from the root of `main`; no build configuration needed.
 
 ## Notes
@@ -47,6 +47,9 @@ Every entry receives this sentence, verbatim:
 - `index.html` and every entry are static documents. Pages needs no workflow, no action, no
   dependencies — there is nothing to install.
 - No cookies, no trackers, no analytics.
+- The archive opens in a **light** (paper) theme; a switch in the masthead offers the original night
+  theme. It is a plain checkbox styled with `:has()`, so there is still no script anywhere in the page.
+  Because it is script-free the choice does not persist across reloads — light is the door every time.
 
 Follow along on X: [@MiaAI_lab](https://x.com/MiaAI_lab).
 
