@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f6f3ec">
+<meta name="theme-color" content="#090909">
+<meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f3ec">
 <meta name="description" content="An archive of the most beautiful HTML files language models could make. One prompt, one model, one self-contained file.">
 <title>Mia’s Most Beautiful HTML Experiments</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,7 +69,7 @@
     --ease: cubic-bezier(0.16, 0.84, 0.24, 1);
   }
 
-  /* ── night: opt in from the switch in the masthead; light is the default ── */
+  /* ── night is the default (the #night switch starts checked); uncheck it for light ── */
   :root:has(#night:checked) {
     color-scheme: dark;
     --bg: #090909;
@@ -754,7 +755,7 @@
           <a class="xlink" href="https://x.com/MiaAI_lab" rel="noopener me"><span class="xm" aria-hidden="true">&#88;</span>@MiaAI_lab</a>
         </nav>
         <span class="themer">
-          <input class="vh" type="checkbox" id="night" aria-label="Switch to the night theme">
+          <input class="vh" type="checkbox" id="night" checked aria-label="Switch to the night theme">
           <label class="knob" for="night"></label>
           <label class="lbl" for="night"></label>
         </span>
